@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marcuscaisey/golox.git"
+    "url": "git+https://github.com/marcuscaisey/tree-sitter-lox.git"
   },
   "keywords": [
     "parser",
@@ -17,9 +17,9 @@
   "author": "Marcus Caisey",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/marcuscaisey/golox/issues"
+    "url": "https://github.com/marcuscaisey/tree-sitter-lox/issues"
   },
-  "homepage": "https://github.com/marcuscaisey/golox#readme",
+  "homepage": "https://github.com/marcuscaisey/tree-sitter-lox#readme",
   "dependencies": {
     "nan": "^2.18.0"
   },
