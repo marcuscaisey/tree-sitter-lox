@@ -1,2 +1,3 @@
 # tree-sitter-lox
-Lox grammar for tree-sitter
+
+A [tree-sitter](https://github.com/tree-sitter/tree-sitter) grammar for Lox.
