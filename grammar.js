@@ -80,7 +80,7 @@ module.exports = grammar({
 
     number: (_) => /\d+(\.\d+)?/,
 
-    string: (_) => /"[^"]*"/,
+    string: (_) => /"[^"\r\n]*"/,
 
     boolean: (_) => choice("true", "false"),
 
