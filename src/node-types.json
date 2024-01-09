@@ -87,6 +87,11 @@
     "fields": {}
   },
   {
+    "type": "comment",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "expression_statement",
     "named": true,
     "fields": {},
@@ -420,6 +425,10 @@
     "named": false
   },
   {
+    "type": "*/",
+    "named": false
+  },
+  {
     "type": "+",
     "named": false
   },
@@ -433,6 +442,14 @@
   },
   {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": "/*",
+    "named": false
+  },
+  {
+    "type": "//",
     "named": false
   },
   {

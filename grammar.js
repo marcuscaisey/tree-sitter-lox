@@ -85,5 +85,9 @@ module.exports = grammar({
     boolean: (_) => choice("true", "false"),
 
     nil: (_) => "nil",
+
+    comment: ($) => choice(seq("//", /.*/), seq("/*", repeat(/./), "*/")),
   },
+
+  extras: ($) => [/\s/, $.comment],
 });
