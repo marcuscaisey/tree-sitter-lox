@@ -1,0 +1,50 @@
+// Literals
+1;
+// <- number
+"one";
+// <- string
+true;
+// <- boolean
+nil;
+// <- constant.builtin
+
+// Unary expressions
+!1;
+// <- operator
+-1;
+// <- operator
+
+// Binary expressions
+1, 2;
+ // <- punctuation.delimiter
+1 == 2;
+  // <- operator
+1 != 2;
+  // <- operator
+1 < 2;
+  // <- operator
+1 <= 2;
+  // <- operator
+1 > 2;
+  // <- operator
+1 >= 2;
+  // <- operator
+1 + 2;
+  // <- operator
+1 - 2;
+  // <- operator
+1 * 2;
+  // <- operator
+1 / 2;
+  // <- operator
+
+// Ternary expression
+1 ? 2 : 3;
+  // <- conditional.ternary
+  //  ^ conditional.ternary
+
+// Group expression
+( 1 );
+// <- punctuation.bracket
+//  ^ punctuation.bracket
+//   ^ punctuation.delimiter

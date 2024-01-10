@@ -32,7 +32,8 @@
       "scope": "source.lox",
       "file-types": [
         "lox"
-      ]
+      ],
+      "highlights": "queries/lox/highlights.scm"
     }
   ]
 }
