@@ -40,8 +40,8 @@ nil;
 
 // Ternary expression
 1 ? 2 : 3;
-  // <- conditional.ternary
-  //  ^ conditional.ternary
+  // <- keyword.conditional.ternary
+  //  ^ keyword.conditional.ternary
 
 // Group expression
 ( 1 );

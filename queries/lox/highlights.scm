@@ -37,4 +37,4 @@
 [
   "?"
   ":"
-] @conditional.ternary
+] @keyword.conditional.ternary
