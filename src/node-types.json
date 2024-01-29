@@ -20,6 +20,10 @@
             "named": true
           },
           {
+            "type": "identifier",
+            "named": true
+          },
+          {
             "type": "nil",
             "named": true
           },
@@ -55,6 +59,10 @@
           },
           {
             "type": "group_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -112,6 +120,10 @@
           "named": true
         },
         {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "nil",
           "named": true
         },
@@ -152,6 +164,10 @@
           },
           {
             "type": "group_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -199,6 +215,10 @@
           "named": true
         },
         {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "nil",
           "named": true
         },
@@ -236,6 +256,10 @@
         {
           "type": "print_statement",
           "named": true
+        },
+        {
+          "type": "variable_declaration",
+          "named": true
         }
       ]
     }
@@ -258,6 +282,10 @@
           },
           {
             "type": "group_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -299,6 +327,10 @@
             "named": true
           },
           {
+            "type": "identifier",
+            "named": true
+          },
+          {
             "type": "nil",
             "named": true
           },
@@ -334,6 +366,10 @@
           },
           {
             "type": "group_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -381,6 +417,10 @@
             "named": true
           },
           {
+            "type": "identifier",
+            "named": true
+          },
+          {
             "type": "nil",
             "named": true
           },
@@ -402,6 +442,53 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "variable_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "group_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -469,6 +556,10 @@
     "named": false
   },
   {
+    "type": "=",
+    "named": false
+  },
+  {
     "type": "==",
     "named": false
   },
@@ -489,6 +580,10 @@
     "named": false
   },
   {
+    "type": "identifier",
+    "named": true
+  },
+  {
     "type": "nil",
     "named": true
   },
@@ -506,6 +601,10 @@
   },
   {
     "type": "true",
+    "named": false
+  },
+  {
+    "type": "var",
     "named": false
   }
 ]

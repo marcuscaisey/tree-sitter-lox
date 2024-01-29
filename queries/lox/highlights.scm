@@ -1,4 +1,7 @@
-"print" @keyword
+[
+  "print"
+  "var"
+] @keyword
 
 (comment) @comment
 
@@ -9,6 +12,8 @@
 (boolean) @boolean
 
 (nil) @constant.builtin
+
+(identifier) @variable
 
 [
   "!"

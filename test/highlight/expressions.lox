@@ -8,13 +8,17 @@ true;
 nil;
 // <- constant.builtin
 
-// Unary expressions
+// Identifier
+foo;
+// <- variable
+
+// Unary Expressions
 !1;
 // <- operator
 -1;
 // <- operator
 
-// Binary expressions
+// Binary Expressions
 1, 2;
  // <- punctuation.delimiter
 1 == 2;

@@ -2,7 +2,12 @@ module.exports = grammar({
   name: "lox",
 
   rules: {
-    program: ($) => repeat($._statement),
+    program: ($) => repeat(choice($._declaration, $._statement)),
+
+    _declaration: ($) => choice($.variable_declaration),
+
+    variable_declaration: ($) =>
+      seq("var", $.identifier, optional(seq("=", $._expression)), ";"),
 
     _statement: ($) => choice($.expression_statement, $.print_statement),
 
@@ -12,12 +17,25 @@ module.exports = grammar({
 
     _expression: ($) =>
       choice(
+        $._literal,
+        $.identifier,
         $.unary_expression,
         $.binary_expression,
         $.ternary_expression,
-        $._literal_expression,
         $.group_expression,
       ),
+
+    _literal: ($) => choice($.number, $.string, $.boolean, $.nil),
+
+    number: (_) => /\d+(\.\d+)?/,
+
+    string: (_) => /"[^"\r\n]*"/,
+
+    boolean: (_) => choice("true", "false"),
+
+    nil: (_) => "nil",
+
+    identifier: (_) => /[a-zA-Z][a-zA-Z0-9_]*/,
 
     binary_expression: ($) =>
       choice(
@@ -76,17 +94,7 @@ module.exports = grammar({
 
     group_expression: ($) => seq("(", field("expression", $._expression), ")"),
 
-    _literal_expression: ($) => choice($.number, $.string, $.boolean, $.nil),
-
-    number: (_) => /\d+(\.\d+)?/,
-
-    string: (_) => /"[^"\r\n]*"/,
-
-    boolean: (_) => choice("true", "false"),
-
-    nil: (_) => "nil",
-
-    comment: ($) => choice(seq("//", /.*/), seq("/*", repeat(/./), "*/")),
+    comment: (_) => choice(seq("//", /.*/), seq("/*", repeat(/./), "*/")),
   },
 
   extras: ($) => [/\s/, $.comment],

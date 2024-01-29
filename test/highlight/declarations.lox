@@ -1,0 +1,4 @@
+// Variable Declaration
+var foo = 2;
+// <- keyword
+//  ^ variable
