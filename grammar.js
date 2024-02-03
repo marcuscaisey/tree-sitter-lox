@@ -1,6 +1,10 @@
 module.exports = grammar({
   name: "lox",
 
+  extras: ($) => [/\s/, $.comment],
+
+  word: ($) => $.identifier,
+
   rules: {
     program: ($) => repeat(choice($._declaration, $._statement)),
 
@@ -96,6 +100,4 @@ module.exports = grammar({
 
     comment: (_) => choice(seq("//", /.*/), seq("/*", repeat(/./), "*/")),
   },
-
-  extras: ($) => [/\s/, $.comment],
 });
