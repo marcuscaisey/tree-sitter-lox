@@ -1,4 +1,4 @@
-// Literals
+// Literal Expressions
 1;
 // <- number
 "one";
@@ -8,9 +8,20 @@ true;
 nil;
 // <- constant.builtin
 
-// Identifier
+// Identifier Expression
 foo;
 // <- variable
+
+// Assignment Expression
+foo = 1;
+// <- variable
+//  ^ operator
+
+// Group expression
+( 1 );
+// <- punctuation.bracket
+//  ^ punctuation.bracket
+//   ^ punctuation.delimiter
 
 // Unary Expressions
 !1;
@@ -46,9 +57,3 @@ foo;
 1 ? 2 : 3;
   // <- keyword.conditional.ternary
   //  ^ keyword.conditional.ternary
-
-// Group expression
-( 1 );
-// <- punctuation.bracket
-//  ^ punctuation.bracket
-//   ^ punctuation.delimiter

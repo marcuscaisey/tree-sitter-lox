@@ -1,5 +1,5 @@
 ===============================================================================
-Literals
+Literal Expressions
 ===============================================================================
 
 1;
@@ -26,7 +26,20 @@ nil;
     (nil)))
 
 ===============================================================================
-Identifiers
+Group Expression
+===============================================================================
+
+(1);
+
+-------------------------------------------------------------------------------
+
+(program
+  (expression_statement
+    (group_expression
+      expression: (number))))
+
+===============================================================================
+Identifier Expressions
 ===============================================================================
 
 foo;
@@ -260,48 +273,68 @@ Ternary Expression - Right Associativity
         else: (number)))))
 
 ===============================================================================
-Group Expression
+Assignment Expression
 ===============================================================================
 
-(1);
+a = 1;
 
 -------------------------------------------------------------------------------
 
 (program
   (expression_statement
-    (group_expression
-      expression: (number))))
+    (assignment_expression
+      left: (identifier)
+      right: (number))))
 
 ===============================================================================
-Operator Precedence
+Assignment Expression - Right Associativity
 ===============================================================================
 
-1, 1 ? 1 : 1 == 1 < 1 + -1 * 1;
+a = b = 1;
 
 -------------------------------------------------------------------------------
 
 (program
   (expression_statement
-    (binary_expression
-      left: (number)
-      ; ","
-      right: (ternary_expression
-        condition: (number)
-        ; "?"
-        then: (number)
-        ; ":"
-        else: (binary_expression
-          left: (number)
-          ; "=="
-          right: (binary_expression
+    (assignment_expression
+      left: (identifier)
+      right: (assignment_expression
+        left: (identifier)
+        right: (number)))))
+
+===============================================================================
+Precedence
+===============================================================================
+
+a = 1, 1 ? 1 : 1 == 1 < 1 + -1 * 1;
+
+-------------------------------------------------------------------------------
+
+(program
+  (expression_statement
+    (assignment_expression
+      left: (identifier)
+      ; "="
+      right: (binary_expression
+        left: (number)
+        ; ","
+        right: (ternary_expression
+          condition: (number)
+          ; "?"
+          then: (number)
+          ; ":"
+          else: (binary_expression
             left: (number)
-            ; "<"
+            ; "=="
             right: (binary_expression
               left: (number)
-              ; "+"
+              ; "<"
               right: (binary_expression
-                left: (unary_expression
-                  ; "-"
-                  right: (number))
-                ; "*"
-                right: (number)))))))))
+                left: (number)
+                ; "+"
+                right: (binary_expression
+                  left: (unary_expression
+                    ; "-"
+                    right: (number))
+                  ; "*"
+                  right: (number))))))))))

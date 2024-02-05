@@ -1,3 +1,6 @@
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
+
 module.exports = grammar({
   name: "lox",
 
@@ -22,11 +25,12 @@ module.exports = grammar({
     _expression: ($) =>
       choice(
         $._literal,
+        $.group_expression,
         $.identifier,
         $.unary_expression,
         $.binary_expression,
         $.ternary_expression,
-        $.group_expression,
+        $.assignment_expression,
       ),
 
     _literal: ($) => choice($.number, $.string, $.boolean, $.nil),
@@ -39,16 +43,21 @@ module.exports = grammar({
 
     nil: (_) => "nil",
 
+    group_expression: ($) => seq("(", field("expression", $._expression), ")"),
+
     identifier: (_) => /[a-zA-Z][a-zA-Z0-9_]*/,
+
+    unary_expression: ($) =>
+      prec.right(8, seq(choice("!", "-"), field("right", $._expression))),
 
     binary_expression: ($) =>
       choice(
         prec.left(
-          1,
+          2,
           seq(field("left", $._expression), ",", field("right", $._expression)),
         ),
         prec.left(
-          3,
+          4,
           seq(
             field("left", $._expression),
             choice("==", "!="),
@@ -56,7 +65,7 @@ module.exports = grammar({
           ),
         ),
         prec.left(
-          4,
+          5,
           seq(
             field("left", $._expression),
             choice("<", "<=", ">", ">="),
@@ -64,7 +73,7 @@ module.exports = grammar({
           ),
         ),
         prec.left(
-          5,
+          6,
           seq(
             field("left", $._expression),
             choice("+", "-"),
@@ -72,7 +81,7 @@ module.exports = grammar({
           ),
         ),
         prec.left(
-          6,
+          7,
           seq(
             field("left", $._expression),
             choice("*", "/"),
@@ -83,7 +92,7 @@ module.exports = grammar({
 
     ternary_expression: ($) =>
       prec.right(
-        2,
+        3,
         seq(
           field("condition", $._expression),
           "?",
@@ -93,10 +102,11 @@ module.exports = grammar({
         ),
       ),
 
-    unary_expression: ($) =>
-      prec.right(7, seq(choice("!", "-"), field("right", $._expression))),
-
-    group_expression: ($) => seq("(", field("expression", $._expression), ")"),
+    assignment_expression: ($) =>
+      prec.right(
+        1,
+        seq(field("left", $.identifier), "=", field("right", $._expression)),
+      ),
 
     comment: (_) => choice(seq("//", /.*/), seq("/*", repeat(/./), "*/")),
   },
