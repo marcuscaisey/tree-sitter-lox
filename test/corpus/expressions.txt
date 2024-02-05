@@ -306,18 +306,18 @@ a = b = 1;
 Precedence
 ===============================================================================
 
-a = 1, 1 ? 1 : 1 == 1 < 1 + -1 * 1;
+1, a = 1 ? 1 : 1 == 1 < 1 + -1 * 1;
 
 -------------------------------------------------------------------------------
 
 (program
   (expression_statement
-    (assignment_expression
-      left: (identifier)
-      ; "="
-      right: (binary_expression
-        left: (number)
-        ; ","
+    (binary_expression
+      left: (number)
+      ; ","
+      right: (assignment_expression
+        left: (identifier)
+        ; "="
         right: (ternary_expression
           condition: (number)
           ; "?"
