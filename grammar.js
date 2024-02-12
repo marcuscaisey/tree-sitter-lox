@@ -9,20 +9,22 @@ module.exports = grammar({
   word: ($) => $.identifier,
 
   rules: {
-    program: ($) => repeat(choice($.block, $._declaration, $._statement)),
+    program: ($) => repeat(choice($._declaration, $._statement)),
 
     _declaration: ($) => choice($.variable_declaration),
 
     variable_declaration: ($) =>
       seq("var", $.identifier, optional(seq("=", $._expression)), ";"),
 
-    _statement: ($) => choice($.expression_statement, $.print_statement),
+    _statement: ($) =>
+      choice($.block_statement, $.expression_statement, $.print_statement),
+
+    block_statement: ($) =>
+      seq("{", repeat(choice($._declaration, $._statement)), "}"),
 
     expression_statement: ($) => seq($._expression, ";"),
 
     print_statement: ($) => seq("print", $._expression, ";"),
-
-    block: ($) => seq("{", repeat(choice($._declaration, $._statement)), "}"),
 
     _expression: ($) =>
       choice(

@@ -160,13 +160,17 @@
     }
   },
   {
-    "type": "block",
+    "type": "block_statement",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "block_statement",
+          "named": true
+        },
         {
           "type": "expression_statement",
           "named": true
@@ -355,7 +359,7 @@
       "required": false,
       "types": [
         {
-          "type": "block",
+          "type": "block_statement",
           "named": true
         },
         {

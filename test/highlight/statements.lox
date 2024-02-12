@@ -1,3 +1,9 @@
 // Print Statement
 print 1;
 // <- keyword
+
+{
+// <- punctuation.bracket
+    var a = 1;
+}
+// <- punctuation.bracket

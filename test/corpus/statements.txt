@@ -1,16 +1,25 @@
 ===============================================================================
-Print Statement
+Block Statement
 ===============================================================================
 
-print 1 + 2;
+var a = 1;
+{
+    var a = 2;
+    print a;
+}
 
 -------------------------------------------------------------------------------
 
 (program
-  (print_statement
-    (binary_expression
-      left: (number)
-      right: (number))))
+  (variable_declaration
+    (identifier)
+    (number))
+  (block_statement
+    (variable_declaration
+      (identifier)
+      (number))
+    (print_statement
+      (identifier))))
 
 ===============================================================================
 Expression Statement
@@ -22,6 +31,20 @@ Expression Statement
 
 (program
   (expression_statement
+    (binary_expression
+      left: (number)
+      right: (number))))
+
+===============================================================================
+Print Statement
+===============================================================================
+
+print 1 + 2;
+
+-------------------------------------------------------------------------------
+
+(program
+  (print_statement
     (binary_expression
       left: (number)
       right: (number))))
