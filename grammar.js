@@ -9,7 +9,7 @@ module.exports = grammar({
   word: ($) => $.identifier,
 
   rules: {
-    program: ($) => repeat(choice($._declaration, $._statement)),
+    program: ($) => repeat(choice($.block, $._declaration, $._statement)),
 
     _declaration: ($) => choice($.variable_declaration),
 
@@ -21,6 +21,8 @@ module.exports = grammar({
     expression_statement: ($) => seq($._expression, ";"),
 
     print_statement: ($) => seq("print", $._expression, ";"),
+
+    block: ($) => seq("{", repeat(choice($._declaration, $._statement)), "}"),
 
     _expression: ($) =>
       choice(

@@ -1,0 +1,22 @@
+===============================================================================
+Block Statement
+===============================================================================
+
+var a = 1;
+{
+    var a = 2;
+    print a;
+}
+
+-------------------------------------------------------------------------------
+
+(program
+  (variable_declaration
+    (identifier)
+    (number))
+  (block
+    (variable_declaration
+      (identifier)
+      (number))
+    (print_statement
+      (identifier))))
