@@ -22,14 +22,31 @@ module.exports = grammar({
       ),
 
     _statement: ($) =>
-      choice($.block_statement, $.expression_statement, $.print_statement),
-
-    block_statement: ($) =>
-      seq("{", repeat(choice($._declaration, $._statement)), "}"),
+      choice(
+        $.expression_statement,
+        $.print_statement,
+        $.block_statement,
+        $.if_statement,
+      ),
 
     expression_statement: ($) => seq($._expression, ";"),
 
     print_statement: ($) => seq("print", $._expression, ";"),
+
+    block_statement: ($) =>
+      seq("{", repeat(choice($._declaration, $._statement)), "}"),
+
+    if_statement: ($) =>
+      prec.right(
+        seq(
+          "if",
+          "(",
+          field("condition", $._expression),
+          ")",
+          field("then", $._statement),
+          optional(seq("else", field("else", $._statement))),
+        ),
+      ),
 
     _expression: ($) =>
       choice(

@@ -1,27 +1,4 @@
 ===============================================================================
-Block Statement
-===============================================================================
-
-var a = 1;
-{
-    var a = 2;
-    print a;
-}
-
--------------------------------------------------------------------------------
-
-(program
-  (variable_declaration
-    (identifier)
-    (number))
-  (block_statement
-    (variable_declaration
-      (identifier)
-      (number))
-    (print_statement
-      (identifier))))
-
-===============================================================================
 Expression Statement
 ===============================================================================
 
@@ -48,3 +25,173 @@ print 1 + 2;
     (binary_expression
       left: (number)
       right: (number))))
+
+===============================================================================
+Block Statement
+===============================================================================
+
+var a = 1;
+{
+    var a = 2;
+    print a;
+}
+
+-------------------------------------------------------------------------------
+
+(program
+  (variable_declaration
+    (identifier)
+    (number))
+  (block_statement
+    (variable_declaration
+      (identifier)
+      (number))
+    (print_statement
+      (identifier))))
+
+===============================================================================
+If Statement
+===============================================================================
+
+if (1 < 2) {
+    print 3;
+}
+
+-------------------------------------------------------------------------------
+
+(program
+  (if_statement
+    condition: (binary_expression
+      left: (number)
+      right: (number))
+    then: (block_statement
+      (print_statement
+        (number)))))
+
+===============================================================================
+If Statement - Else
+===============================================================================
+
+if (1 < 2) {
+    print 3;
+} else {
+    print 4;
+}
+
+-------------------------------------------------------------------------------
+
+(program
+  (if_statement
+    condition: (binary_expression
+      left: (number)
+      right: (number))
+    then: (block_statement
+      (print_statement
+        (number)))
+    else: (block_statement
+      (print_statement
+        (number)))))
+
+===============================================================================
+If Statement - Else If
+===============================================================================
+
+if (1 < 2) {
+    print 3;
+} else if (4 < 5) {
+    print 6;
+}
+
+-------------------------------------------------------------------------------
+
+(program
+  (if_statement
+    condition: (binary_expression
+      left: (number)
+      right: (number))
+    then: (block_statement
+      (print_statement
+        (number)))
+    else: (if_statement
+      condition: (binary_expression
+        left: (number)
+        right: (number))
+      then: (block_statement
+        (print_statement
+          (number))))))
+
+===============================================================================
+If Statement - Nested If
+===============================================================================
+
+if (1 < 2) {
+    if (3 < 4) {
+        print 5;
+    }
+    print 6;
+}
+
+-------------------------------------------------------------------------------
+
+(program
+  (if_statement
+    condition: (binary_expression
+      left: (number)
+      right: (number))
+    then: (block_statement
+      (if_statement
+        condition: (binary_expression
+          left: (number)
+          right: (number))
+        then: (block_statement
+          (print_statement
+            (number))))
+      (print_statement
+        (number)))))
+
+===============================================================================
+If Statement - No Block
+===============================================================================
+
+if (1 < 2)
+    print 3;
+else
+    print 4;
+
+-------------------------------------------------------------------------------
+
+(program
+  (if_statement
+    condition: (binary_expression
+      left: (number)
+      right: (number))
+    then: (print_statement
+      (number))
+    else: (print_statement
+      (number))))
+
+===============================================================================
+If Statement - Associativity
+===============================================================================
+
+if (1 < 2)
+    if (3 < 4)
+        print 5;
+    else
+        print 6;
+
+-------------------------------------------------------------------------------
+
+(program
+  (if_statement
+    condition: (binary_expression
+      left: (number)
+      right: (number))
+    then: (if_statement
+      condition: (binary_expression
+        left: (number)
+        right: (number))
+      then: (print_statement
+        (number))
+      else: (print_statement
+        (number)))))

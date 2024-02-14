@@ -3,6 +3,11 @@
   "var"
 ] @keyword
 
+[
+  "if"
+  "else"
+] @keyword.conditional
+
 (comment) @comment
 
 (number) @number
