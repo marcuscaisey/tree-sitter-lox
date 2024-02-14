@@ -14,7 +14,12 @@ module.exports = grammar({
     _declaration: ($) => choice($.variable_declaration),
 
     variable_declaration: ($) =>
-      seq("var", $.identifier, optional(seq("=", $._expression)), ";"),
+      seq(
+        "var",
+        field("name", $.identifier),
+        optional(seq("=", field("initialiser", $._expression))),
+        ";",
+      ),
 
     _statement: ($) =>
       choice($.block_statement, $.expression_statement, $.print_statement),

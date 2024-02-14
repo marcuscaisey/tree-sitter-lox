@@ -12,9 +12,9 @@
 #define ALIAS_COUNT 0
 #define TOKEN_COUNT 34
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 6
+#define FIELD_COUNT 8
 #define MAX_ALIAS_SEQUENCE_LENGTH 5
-#define PRODUCTION_ID_COUNT 5
+#define PRODUCTION_ID_COUNT 7
 
 enum {
   sym_identifier = 1,
@@ -395,9 +395,11 @@ enum {
   field_condition = 1,
   field_else = 2,
   field_expression = 3,
-  field_left = 4,
-  field_right = 5,
-  field_then = 6,
+  field_initialiser = 4,
+  field_left = 5,
+  field_name = 6,
+  field_right = 7,
+  field_then = 8,
 };
 
 static const char * const ts_field_names[] = {
@@ -405,7 +407,9 @@ static const char * const ts_field_names[] = {
   [field_condition] = "condition",
   [field_else] = "else",
   [field_expression] = "expression",
+  [field_initialiser] = "initialiser",
   [field_left] = "left",
+  [field_name] = "name",
   [field_right] = "right",
   [field_then] = "then",
 };
@@ -413,19 +417,26 @@ static const char * const ts_field_names[] = {
 static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [1] = {.index = 0, .length = 1},
   [2] = {.index = 1, .length = 1},
-  [3] = {.index = 2, .length = 2},
-  [4] = {.index = 4, .length = 3},
+  [3] = {.index = 2, .length = 1},
+  [4] = {.index = 3, .length = 2},
+  [5] = {.index = 5, .length = 2},
+  [6] = {.index = 7, .length = 3},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
   [0] =
     {field_right, 1},
   [1] =
-    {field_expression, 1},
+    {field_name, 1},
   [2] =
+    {field_expression, 1},
+  [3] =
     {field_left, 0},
     {field_right, 2},
-  [4] =
+  [5] =
+    {field_initialiser, 3},
+    {field_name, 1},
+  [7] =
     {field_condition, 0},
     {field_else, 4},
     {field_then, 2},
@@ -2883,7 +2894,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [81] = {.entry = {.count = 1, .reusable = false}}, SHIFT(15),
   [83] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__expression, 1),
   [85] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__expression, 1),
-  [87] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_assignment_expression, 3, .production_id = 3),
+  [87] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_assignment_expression, 3, .production_id = 4),
   [89] = {.entry = {.count = 1, .reusable = true}}, SHIFT(20),
   [91] = {.entry = {.count = 1, .reusable = true}}, SHIFT(22),
   [93] = {.entry = {.count = 1, .reusable = false}}, SHIFT(13),
@@ -2895,15 +2906,15 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [105] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__literal, 1),
   [107] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_boolean, 1),
   [109] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_boolean, 1),
-  [111] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_ternary_expression, 5, .production_id = 4),
-  [113] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_binary_expression, 3, .production_id = 3),
-  [115] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_binary_expression, 3, .production_id = 3),
-  [117] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_group_expression, 3, .production_id = 2),
-  [119] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_group_expression, 3, .production_id = 2),
+  [111] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_ternary_expression, 5, .production_id = 6),
+  [113] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_binary_expression, 3, .production_id = 4),
+  [115] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_binary_expression, 3, .production_id = 4),
+  [117] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_group_expression, 3, .production_id = 3),
+  [119] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_group_expression, 3, .production_id = 3),
   [121] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_unary_expression, 2, .production_id = 1),
   [123] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_unary_expression, 2, .production_id = 1),
-  [125] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_variable_declaration, 3),
-  [127] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_variable_declaration, 3),
+  [125] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_variable_declaration, 3, .production_id = 2),
+  [127] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_variable_declaration, 3, .production_id = 2),
   [129] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_program_repeat1, 1),
   [131] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_program_repeat1, 1),
   [133] = {.entry = {.count = 1, .reusable = true}}, SHIFT(46),
@@ -2921,8 +2932,8 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [157] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__statement, 1),
   [159] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__statement, 1),
   [161] = {.entry = {.count = 1, .reusable = true}}, SHIFT(59),
-  [163] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_variable_declaration, 5),
-  [165] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_variable_declaration, 5),
+  [163] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_variable_declaration, 5, .production_id = 5),
+  [165] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_variable_declaration, 5, .production_id = 5),
   [167] = {.entry = {.count = 1, .reusable = true}}, SHIFT(11),
   [169] = {.entry = {.count = 1, .reusable = true}}, SHIFT(53),
   [171] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_block_statement, 2),

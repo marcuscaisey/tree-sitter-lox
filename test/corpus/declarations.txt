@@ -9,7 +9,7 @@ var bar = 1;
 
 (program
   (variable_declaration
-    (identifier))
+    name: (identifier))
   (variable_declaration
-    (identifier)
-    (number)))
+    name: (identifier)
+    initialiser: (number)))
