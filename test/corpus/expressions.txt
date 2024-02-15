@@ -94,6 +94,8 @@ Binary Expressions
 ===============================================================================
 
 1, 2;
+1 or 2;
+1 and 2;
 1 == 2;
 1 != 2;
 1 < 2;
@@ -151,6 +153,14 @@ Binary Expressions
   (expression_statement
     (binary_expression
       left: (number)
+      right: (number)))
+  (expression_statement
+    (binary_expression
+      left: (number)
+      right: (number)))
+  (expression_statement
+    (binary_expression
+      left: (number)
       right: (number))))
 
 ===============================================================================
@@ -158,6 +168,8 @@ Binary Expressions - Left Associativity
 ===============================================================================
 
 1, 2, 3;
+1 or 2 or 3;
+1 and 2 and 3;
 1 == 2 == 3;
 1 != 2 != 3;
 1 < 2 < 3;
@@ -172,6 +184,18 @@ Binary Expressions - Left Associativity
 -------------------------------------------------------------------------------
 
 (program
+  (expression_statement
+    (binary_expression
+      left: (binary_expression
+        left: (number)
+        right: (number))
+      right: (number)))
+  (expression_statement
+    (binary_expression
+      left: (binary_expression
+        left: (number)
+        right: (number))
+      right: (number)))
   (expression_statement
     (binary_expression
       left: (binary_expression
@@ -306,7 +330,7 @@ a = b = 1;
 Precedence
 ===============================================================================
 
-1, a = 1 ? 1 : 1 == 1 < 1 + -1 * 1;
+1, a = 1 ? 1 : 1 or 1 and 1 == 1 < 1 + -1 * 1;
 
 -------------------------------------------------------------------------------
 
@@ -325,16 +349,22 @@ Precedence
           ; ":"
           else: (binary_expression
             left: (number)
-            ; "=="
+            ; "or"
             right: (binary_expression
               left: (number)
-              ; "<"
+              ; "and"
               right: (binary_expression
                 left: (number)
-                ; "+"
+                ; "=="
                 right: (binary_expression
-                  left: (unary_expression
-                    ; "-"
-                    right: (number))
-                  ; "*"
-                  right: (number))))))))))
+                  left: (number)
+                  ; "<"
+                  right: (binary_expression
+                    left: (number)
+                    ; "+"
+                    right: (binary_expression
+                      left: (unary_expression
+                        ; "-"
+                        right: (number))
+                      ; "*"
+                      right: (number))))))))))))

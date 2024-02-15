@@ -74,7 +74,7 @@ module.exports = grammar({
     identifier: (_) => /[a-zA-Z][a-zA-Z0-9_]*/,
 
     unary_expression: ($) =>
-      prec.right(8, seq(choice("!", "-"), field("right", $._expression))),
+      prec.right(10, seq(choice("!", "-"), field("right", $._expression))),
 
     binary_expression: ($) =>
       choice(
@@ -86,7 +86,7 @@ module.exports = grammar({
           4,
           seq(
             field("left", $._expression),
-            choice("==", "!="),
+            "or",
             field("right", $._expression),
           ),
         ),
@@ -94,7 +94,7 @@ module.exports = grammar({
           5,
           seq(
             field("left", $._expression),
-            choice("<", "<=", ">", ">="),
+            "and",
             field("right", $._expression),
           ),
         ),
@@ -102,12 +102,28 @@ module.exports = grammar({
           6,
           seq(
             field("left", $._expression),
-            choice("+", "-"),
+            choice("==", "!="),
             field("right", $._expression),
           ),
         ),
         prec.left(
           7,
+          seq(
+            field("left", $._expression),
+            choice("<", "<=", ">", ">="),
+            field("right", $._expression),
+          ),
+        ),
+        prec.left(
+          8,
+          seq(
+            field("left", $._expression),
+            choice("+", "-"),
+            field("right", $._expression),
+          ),
+        ),
+        prec.left(
+          9,
           seq(
             field("left", $._expression),
             choice("*", "/"),

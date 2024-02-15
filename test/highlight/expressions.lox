@@ -32,6 +32,10 @@ foo = 1;
 // Binary Expressions
 1, 2;
  // <- punctuation.delimiter
+1 and 2;
+  // <- keyword.operator
+1 or 2;
+  // <- keyword.operator
 1 == 2;
   // <- operator
 1 != 2;

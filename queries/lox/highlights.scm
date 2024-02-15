@@ -4,6 +4,11 @@
 ] @keyword
 
 [
+  "or"
+  "and"
+] @keyword.operator
+
+[
   "if"
   "else"
 ] @keyword.conditional
