@@ -13,6 +13,10 @@
   "else"
 ] @keyword.conditional
 
+[
+  "while"
+] @keyword.repeat
+
 (comment) @comment
 
 (number) @number

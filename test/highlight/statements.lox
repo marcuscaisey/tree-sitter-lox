@@ -19,3 +19,11 @@ if (1 < 2) {
   // <- keyword.conditional
     print 4;
 }
+
+// While Statement
+while (1 < 2) {
+// <- keyword.repeat
+   // ^ punctuation.bracket
+   //       ^ punctuation.bracket
+    print 3;
+}

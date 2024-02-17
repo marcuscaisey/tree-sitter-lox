@@ -195,3 +195,39 @@ if (1 < 2)
         (number))
       else: (print_statement
         (number)))))
+
+===============================================================================
+While Statement
+===============================================================================
+
+while (1 < 2) {
+    print 3;
+}
+
+-------------------------------------------------------------------------------
+
+(program
+  (while_statement
+    condition: (binary_expression
+      left: (number)
+      right: (number))
+    body: (block_statement
+      (print_statement
+        (number)))))
+
+===============================================================================
+While Statement - No Block
+===============================================================================
+
+while (1 < 2)
+    print 3;
+
+-------------------------------------------------------------------------------
+
+(program
+  (while_statement
+    condition: (binary_expression
+      left: (number)
+      right: (number))
+    body: (print_statement
+      (number))))
