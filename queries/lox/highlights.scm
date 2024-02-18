@@ -1,6 +1,8 @@
 [
   "print"
   "var"
+  "break"
+  "continue"
 ] @keyword
 
 [

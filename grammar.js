@@ -28,6 +28,8 @@ module.exports = grammar({
         $.block_statement,
         $.if_statement,
         $.while_statement,
+        $.break_statement,
+        $.continue_statement,
       ),
 
     expression_statement: ($) => seq($._expression, ";"),
@@ -50,6 +52,10 @@ module.exports = grammar({
       ),
 
     while_statement: ($) => seq("while", "(", field("condition", $._expression), ")", field("body", $._statement)),
+
+    break_statement: ($) => seq("break", ";"),
+
+    continue_statement: ($) => seq("continue", ";"),
 
     _expression: ($) =>
       choice(

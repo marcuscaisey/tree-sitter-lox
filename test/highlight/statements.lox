@@ -27,3 +27,11 @@ while (1 < 2) {
    //       ^ punctuation.bracket
     print 3;
 }
+
+// Break Statement
+break;
+// <- keyword
+
+// Continue Statement
+continue;
+// <- keyword
