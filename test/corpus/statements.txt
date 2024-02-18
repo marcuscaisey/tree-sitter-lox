@@ -121,7 +121,7 @@ if (1 < 2) {
           (number))))))
 
 ===============================================================================
-If Statement - Nested If
+If Statement - Nested
 ===============================================================================
 
 if (1 < 2) {
@@ -212,6 +212,35 @@ while (1 < 2) {
       left: (number)
       right: (number))
     body: (block_statement
+      (print_statement
+        (number)))))
+
+===============================================================================
+While Statement - Nested
+===============================================================================
+
+while (1 < 2) {
+    while (3 < 4) {
+        print 5;
+    }
+    print 6;
+}
+
+-------------------------------------------------------------------------------
+
+(program
+  (while_statement
+    condition: (binary_expression
+      left: (number)
+      right: (number))
+    body: (block_statement
+      (while_statement
+        condition: (binary_expression
+          left: (number)
+          right: (number))
+        body: (block_statement
+          (print_statement
+            (number))))
       (print_statement
         (number)))))
 
