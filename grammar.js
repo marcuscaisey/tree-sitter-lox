@@ -129,7 +129,7 @@ module.exports = grammar({
           9,
           seq(
             field("left", $._expression),
-            choice("*", "/"),
+            choice("*", "/", "%"),
             field("right", $._expression),
           ),
         ),

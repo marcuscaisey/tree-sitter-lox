@@ -106,10 +106,15 @@ Binary Expressions
 1 - 2;
 1 * 2;
 1 / 2;
+1 % 2;
 
 -------------------------------------------------------------------------------
 
 (program
+  (expression_statement
+    (binary_expression
+      left: (number)
+      right: (number)))
   (expression_statement
     (binary_expression
       left: (number)
@@ -180,10 +185,17 @@ Binary Expressions - Left Associativity
 1 - 2 - 3;
 1 * 2 * 3;
 1 / 2 / 3;
+1 % 2 % 3;
 
 -------------------------------------------------------------------------------
 
 (program
+  (expression_statement
+    (binary_expression
+      left: (binary_expression
+        left: (number)
+        right: (number))
+      right: (number)))
   (expression_statement
     (binary_expression
       left: (binary_expression
