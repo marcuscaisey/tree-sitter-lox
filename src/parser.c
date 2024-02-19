@@ -497,9 +497,9 @@ enum {
   field_initialiser = 5,
   field_left = 6,
   field_name = 7,
-  field_post = 8,
-  field_right = 9,
-  field_then = 10,
+  field_right = 8,
+  field_then = 9,
+  field_update = 10,
 };
 
 static const char * const ts_field_names[] = {
@@ -511,9 +511,9 @@ static const char * const ts_field_names[] = {
   [field_initialiser] = "initialiser",
   [field_left] = "left",
   [field_name] = "name",
-  [field_post] = "post",
   [field_right] = "right",
   [field_then] = "then",
+  [field_update] = "update",
 };
 
 static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
@@ -570,14 +570,14 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_then, 4},
   [20] =
     {field_body, 6},
-    {field_post, 4},
+    {field_update, 4},
   [22] =
     {field_body, 6},
     {field_condition, 3},
   [24] =
     {field_body, 6},
     {field_initialiser, 2},
-    {field_post, 4},
+    {field_update, 4},
   [27] =
     {field_body, 6},
     {field_condition, 3},
@@ -585,12 +585,12 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
   [30] =
     {field_body, 7},
     {field_condition, 3},
-    {field_post, 5},
+    {field_update, 5},
   [33] =
     {field_body, 7},
     {field_condition, 3},
     {field_initialiser, 2},
-    {field_post, 5},
+    {field_update, 5},
 };
 
 static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE_LENGTH] = {

@@ -279,7 +279,7 @@ for (var i = 0; i < 3; i = i + 1) {
     condition: (binary_expression
       left: (identifier)
       right: (number))
-    post: (assignment_expression
+    update: (assignment_expression
       left: (identifier)
       right: (binary_expression
         left: (identifier)
@@ -310,7 +310,7 @@ for (i = 0; i < 3; i = i + 1) {
     condition: (binary_expression
       left: (identifier)
       right: (number))
-    post: (assignment_expression
+    update: (assignment_expression
       left: (identifier)
       right: (binary_expression
         left: (identifier)
@@ -339,7 +339,7 @@ for (var i = 0; i < 3; i = i + 1) {
     condition: (binary_expression
       left: (identifier)
       right: (number))
-    post: (assignment_expression
+    update: (assignment_expression
       left: (identifier)
       right: (binary_expression
         left: (identifier)
@@ -352,7 +352,7 @@ for (var i = 0; i < 3; i = i + 1) {
         condition: (binary_expression
           left: (identifier)
           right: (number))
-        post: (assignment_expression
+        update: (assignment_expression
           left: (identifier)
           right: (binary_expression
             left: (identifier)
@@ -382,7 +382,7 @@ for (var i = 0; i < 3; i = i + 1)
     condition: (binary_expression
       left: (identifier)
       right: (number))
-    post: (assignment_expression
+    update: (assignment_expression
       left: (identifier)
       right: (binary_expression
         left: (identifier)
@@ -417,7 +417,7 @@ for (;;) {
     condition: (binary_expression
       left: (identifier)
       right: (number))
-    post: (assignment_expression
+    update: (assignment_expression
       left: (identifier)
       right: (binary_expression
         left: (identifier)
@@ -429,7 +429,7 @@ for (;;) {
     initialiser: (variable_declaration
       name: (identifier)
       initialiser: (number))
-    post: (assignment_expression
+    update: (assignment_expression
       left: (identifier)
       right: (binary_expression
         left: (identifier)
