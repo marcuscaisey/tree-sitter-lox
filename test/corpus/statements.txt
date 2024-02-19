@@ -262,6 +262,197 @@ while (1 < 2)
       (number))))
 
 ===============================================================================
+For Statement
+===============================================================================
+
+for (var i = 0; i < 3; i = i + 1) {
+    print i;
+}
+
+-------------------------------------------------------------------------------
+
+(program
+  (for_statement
+    initialiser: (variable_declaration
+      name: (identifier)
+      initialiser: (number))
+    condition: (binary_expression
+      left: (identifier)
+      right: (number))
+    post: (assignment_expression
+      left: (identifier)
+      right: (binary_expression
+        left: (identifier)
+        right: (number)))
+    body: (block_statement
+      (print_statement
+        (identifier)))))
+
+===============================================================================
+For Statement - Assign Initialiser
+===============================================================================
+
+var i;
+for (i = 0; i < 3; i = i + 1) {
+    print i;
+}
+
+-------------------------------------------------------------------------------
+
+(program
+  (variable_declaration
+    name: (identifier))
+  (for_statement
+    initialiser: (expression_statement
+      (assignment_expression
+        left: (identifier)
+        right: (number)))
+    condition: (binary_expression
+      left: (identifier)
+      right: (number))
+    post: (assignment_expression
+      left: (identifier)
+      right: (binary_expression
+        left: (identifier)
+        right: (number)))
+    body: (block_statement
+      (print_statement
+        (identifier)))))
+
+===============================================================================
+For Statement - Nested
+===============================================================================
+
+for (var i = 0; i < 3; i = i + 1) {
+    for (var j = 0; j < 2; j = j + 1) {
+        print j + 2 * i;
+    }
+}
+
+-------------------------------------------------------------------------------
+
+(program
+  (for_statement
+    initialiser: (variable_declaration
+      name: (identifier)
+      initialiser: (number))
+    condition: (binary_expression
+      left: (identifier)
+      right: (number))
+    post: (assignment_expression
+      left: (identifier)
+      right: (binary_expression
+        left: (identifier)
+        right: (number)))
+    body: (block_statement
+      (for_statement
+        initialiser: (variable_declaration
+          name: (identifier)
+          initialiser: (number))
+        condition: (binary_expression
+          left: (identifier)
+          right: (number))
+        post: (assignment_expression
+          left: (identifier)
+          right: (binary_expression
+            left: (identifier)
+            right: (number)))
+        body: (block_statement
+          (print_statement
+            (binary_expression
+              left: (identifier)
+              right: (binary_expression
+                left: (number)
+                right: (identifier)))))))))
+
+===============================================================================
+For Statement - No Block
+===============================================================================
+
+for (var i = 0; i < 3; i = i + 1)
+    print i;
+
+-------------------------------------------------------------------------------
+
+(program
+  (for_statement
+    initialiser: (variable_declaration
+      name: (identifier)
+      initialiser: (number))
+    condition: (binary_expression
+      left: (identifier)
+      right: (number))
+    post: (assignment_expression
+      left: (identifier)
+      right: (binary_expression
+        left: (identifier)
+        right: (number)))
+    body: (print_statement
+      (identifier))))
+
+===============================================================================
+For Statement - Optional Parts
+===============================================================================
+
+for (; a < 3; a = a + 1) {
+    print a;
+}
+
+for (var b = 0;; b = b + 1) {
+    print b;
+}
+
+for (var c = 0; c < 3;) {
+    print c;
+}
+
+for (;;) {
+    print d;
+}
+
+-------------------------------------------------------------------------------
+
+(program
+  (for_statement
+    condition: (binary_expression
+      left: (identifier)
+      right: (number))
+    post: (assignment_expression
+      left: (identifier)
+      right: (binary_expression
+        left: (identifier)
+        right: (number)))
+    body: (block_statement
+      (print_statement
+        (identifier))))
+  (for_statement
+    initialiser: (variable_declaration
+      name: (identifier)
+      initialiser: (number))
+    post: (assignment_expression
+      left: (identifier)
+      right: (binary_expression
+        left: (identifier)
+        right: (number)))
+    body: (block_statement
+      (print_statement
+        (identifier))))
+  (for_statement
+    initialiser: (variable_declaration
+      name: (identifier)
+      initialiser: (number))
+    condition: (binary_expression
+      left: (identifier)
+      right: (number))
+    body: (block_statement
+      (print_statement
+        (identifier))))
+  (for_statement
+    body: (block_statement
+      (print_statement
+        (identifier)))))
+
+===============================================================================
 Break Statement
 ===============================================================================
 

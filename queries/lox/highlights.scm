@@ -17,6 +17,7 @@
 
 [
   "while"
+  "for"
 ] @keyword.repeat
 
 (comment) @comment
