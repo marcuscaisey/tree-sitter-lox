@@ -31,7 +31,7 @@
 (nil) @constant.builtin
 
 (call_expression
-  callee: (identifier) @function.call)
+  callee: (identifier) @function.call (#set! "priority" 105)) ; increase priority to avoid conflict with variable
 
 (identifier) @variable
 
