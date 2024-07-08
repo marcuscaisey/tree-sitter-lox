@@ -54,6 +54,44 @@ Bar_1;
     (identifier)))
 
 ================================================================================
+Call Expressions
+================================================================================
+
+a();
+b(1);
+c(1, 2);
+d(1, 2)(3, 4);
+
+--------------------------------------------------------------------------------
+
+(program
+  (expression_statement
+    (call_expression
+      callee: (identifier)
+      arguments: (arguments)))
+  (expression_statement
+    (call_expression
+      callee: (identifier)
+      arguments: (arguments
+        (number))))
+  (expression_statement
+    (call_expression
+      callee: (identifier)
+      arguments: (arguments
+        (number)
+        (number))))
+  (expression_statement
+    (call_expression
+      callee: (call_expression
+        callee: (identifier)
+        arguments: (arguments
+          (number)
+          (number)))
+      arguments: (arguments
+        (number)
+        (number)))))
+
+================================================================================
 Unary Expressions
 ================================================================================
 
@@ -342,7 +380,7 @@ a = b = 1;
 Precedence
 ================================================================================
 
-1, a = 1 ? 1 : 1 or 1 and 1 == 1 < 1 + -1 * 1;
+1, a = 1 ? 1 : 1 or 1 and 1 == 1 < 1 + -1() * 1;
 
 --------------------------------------------------------------------------------
 
@@ -367,5 +405,7 @@ Precedence
                     left: (number)
                     right: (binary_expression
                       left: (unary_expression
-                        right: (number))
+                        right: (call_expression
+                          callee: (number)
+                          arguments: (arguments)))
                       right: (number))))))))))))

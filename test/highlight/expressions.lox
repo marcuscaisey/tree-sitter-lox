@@ -23,6 +23,14 @@ foo = 1;
 //  ^ punctuation.bracket
 //   ^ punctuation.delimiter
 
+// Call Expression
+foo(1, 2);
+// <- function.call
+// ^ punctuation.bracket
+//   ^ punctuation.delimiter
+//      ^ punctuation.bracket
+//       ^ punctuation.delimiter
+
 // Unary Expressions
 !1;
 // <- operator

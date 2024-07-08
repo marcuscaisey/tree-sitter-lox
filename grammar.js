@@ -85,6 +85,7 @@ module.exports = grammar({
         $._literal,
         $.group_expression,
         $.identifier,
+        $.call_expression,
         $.unary_expression,
         $.binary_expression,
         $.ternary_expression,
@@ -104,6 +105,24 @@ module.exports = grammar({
     group_expression: ($) => seq("(", field("expression", $._expression), ")"),
 
     identifier: (_) => /[a-zA-Z][a-zA-Z0-9_]*/,
+
+    call_expression: ($) =>
+      prec(
+        11,
+        seq(field("callee", $._expression), field("arguments", $.arguments)),
+      ),
+
+    arguments: ($) =>
+      seq(
+        "(",
+        optional(
+          seq(
+            optional($._expression),
+            repeat(prec(2, seq(",", $._expression))),
+          ),
+        ),
+        ")",
+      ),
 
     unary_expression: ($) =>
       prec.right(10, seq(choice("!", "-"), field("right", $._expression))),

@@ -30,6 +30,9 @@
 
 (nil) @constant.builtin
 
+(call_expression
+  callee: (identifier) @function.call)
+
 (identifier) @variable
 
 [

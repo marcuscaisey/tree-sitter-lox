@@ -4,7 +4,9 @@
   "description": "Lox grammar for tree-sitter",
   "scripts": {
     "test": "tree-sitter generate && tree-sitter test",
-    "build": "tree-sitter generate"
+    "update_tests": "tree-sitter generate && tree-sitter test --update",
+    "build": "tree-sitter generate",
+    "parse": "tree-sitter generate && tree-sitter parse"
   },
   "repository": {
     "type": "git",
