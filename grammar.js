@@ -11,7 +11,8 @@ module.exports = grammar({
   rules: {
     program: ($) => repeat(choice($._declaration, $._statement)),
 
-    _declaration: ($) => choice($.variable_declaration),
+    // Declarations
+    _declaration: ($) => choice($.variable_declaration, $.function_declaration),
 
     variable_declaration: ($) =>
       seq(
@@ -19,6 +20,26 @@ module.exports = grammar({
         field("name", $.identifier),
         optional(seq("=", field("initialiser", $._expression))),
         ";",
+      ),
+
+    function_declaration: ($) =>
+      seq(
+        "fun",
+        field("name", $.identifier),
+        field("parameters", $.parameters),
+        field("body", $.block_statement),
+      ),
+
+    parameters: ($) =>
+      seq(
+        "(",
+        optional(
+          seq(
+            optional($.identifier),
+            repeat(seq(",", $.identifier)),
+          ),
+        ),
+        ")",
       ),
 
     _statement: ($) =>
@@ -31,8 +52,10 @@ module.exports = grammar({
         $.for_statement,
         $.break_statement,
         $.continue_statement,
+        $.return_statement,
       ),
 
+    // Statements
     expression_statement: ($) => seq($._expression, ";"),
 
     print_statement: ($) => seq("print", $._expression, ";"),
@@ -80,6 +103,9 @@ module.exports = grammar({
 
     continue_statement: () => seq("continue", ";"),
 
+    return_statement: ($) => seq("return", $._expression, ";"),
+
+    // Expressions
     _expression: ($) =>
       choice(
         $._literal,

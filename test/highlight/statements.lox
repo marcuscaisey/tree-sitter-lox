@@ -43,3 +43,6 @@ break;
 // Continue Statement
 continue;
 // <- keyword
+
+return 1;
+// <- keyword

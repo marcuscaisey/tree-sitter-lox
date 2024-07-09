@@ -1,9 +1,31 @@
+(function_declaration
+  name: (identifier) @function (#set! "priority" 105)) ; increase priority to avoid conflict with variable
+
+(call_expression
+  callee: (identifier) @function.call (#set! "priority" 105)) ; increase priority to avoid conflict with variable
+
+(parameters
+  (identifier) @variable.parameter (#set! "priority" 105)) ; increase priority to avoid conflict with variable
+
+(identifier) @variable
+
+(nil) @constant.builtin
+
+(string) @string
+
+(boolean) @boolean
+
+(number) @number
+
 [
   "print"
   "var"
   "break"
   "continue"
+  "return"
 ] @keyword
+
+"fun" @keyword.function
 
 [
   "or"
@@ -11,29 +33,31 @@
 ] @keyword.operator
 
 [
+  "while"
+  "for"
+] @keyword.repeat
+
+[
   "if"
   "else"
 ] @keyword.conditional
 
 [
-  "while"
-  "for"
-] @keyword.repeat
+  "?"
+  ":"
+] @keyword.conditional.ternary
 
-(comment) @comment
+[
+  ","
+  ";"
+] @punctuation.delimiter
 
-(number) @number
-
-(string) @string
-
-(boolean) @boolean
-
-(nil) @constant.builtin
-
-(call_expression
-  callee: (identifier) @function.call (#set! "priority" 105)) ; increase priority to avoid conflict with variable
-
-(identifier) @variable
+[
+  "("
+  ")"
+  "{"
+  "}"
+] @punctuation.bracket
 
 [
   "!"
@@ -51,19 +75,4 @@
   "="
 ] @operator
 
-[
-  ","
-  ";"
-] @punctuation.delimiter
-
-[
-  "("
-  ")"
-  "{"
-  "}"
-] @punctuation.bracket
-
-[
-  "?"
-  ":"
-] @keyword.conditional.ternary
+(comment) @comment
