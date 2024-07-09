@@ -2,6 +2,12 @@
   name: (identifier) @function (#set! "priority" 105)) ; increase priority to avoid conflict with variable
 
 (call_expression
+  callee: (identifier) @function.builtin
+  (#eq? @function.builtin "clock")
+  (#set! "priority" 110) ; increase priority to avoid conflict with function.call
+)
+
+(call_expression
   callee: (identifier) @function.call (#set! "priority" 105)) ; increase priority to avoid conflict with variable
 
 (parameters
