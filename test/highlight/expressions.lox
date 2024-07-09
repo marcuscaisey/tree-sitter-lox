@@ -1,4 +1,4 @@
-// Literal Expressions
+// Literal Expression
 1;
 // <- number
 "one";
@@ -31,13 +31,13 @@ foo(1, 2);
 //      ^ punctuation.bracket
 //       ^ punctuation.delimiter
 
-// Unary Expressions
+// Unary Expression
 !1;
 // <- operator
 -1;
 // <- operator
 
-// Binary Expressions
+// Binary Expression
 1, 2;
  // <- punctuation.delimiter
 1 and 2;
