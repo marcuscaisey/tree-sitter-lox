@@ -17,6 +17,18 @@ foo = 1;
 // <- variable
 //  ^ operator
 
+// Function Expression
+fun(x, y) {
+// <- keyword.function
+// ^ punctuation.bracket
+//  ^ variable.parameter
+//   ^ punctuation.delimiter
+//     ^ variable.parameter
+//      ^ punctuation.bracket
+    return x + y;
+};
+
+
 // Group expression
 ( 1 );
 // <- punctuation.bracket

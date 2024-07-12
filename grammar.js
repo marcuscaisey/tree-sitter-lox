@@ -33,12 +33,7 @@ module.exports = grammar({
     parameters: ($) =>
       seq(
         "(",
-        optional(
-          seq(
-            optional($.identifier),
-            repeat(seq(",", $.identifier)),
-          ),
-        ),
+        optional(seq(optional($.identifier), repeat(seq(",", $.identifier)))),
         ")",
       ),
 
@@ -109,6 +104,7 @@ module.exports = grammar({
     _expression: ($) =>
       choice(
         $._literal,
+        $.function_expression,
         $.group_expression,
         $.identifier,
         $.call_expression,
@@ -127,6 +123,13 @@ module.exports = grammar({
     boolean: (_) => choice("true", "false"),
 
     nil: (_) => "nil",
+
+    function_expression: ($) =>
+      seq(
+        "fun",
+        field("parameters", $.parameters),
+        field("body", $.block_statement),
+      ),
 
     group_expression: ($) => seq("(", field("expression", $._expression), ")"),
 

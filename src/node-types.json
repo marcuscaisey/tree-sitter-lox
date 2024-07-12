@@ -24,6 +24,10 @@
           "named": true
         },
         {
+          "type": "function_expression",
+          "named": true
+        },
+        {
           "type": "group_expression",
           "named": true
         },
@@ -89,6 +93,10 @@
             "named": true
           },
           {
+            "type": "function_expression",
+            "named": true
+          },
+          {
             "type": "group_expression",
             "named": true
           },
@@ -145,6 +153,10 @@
             "named": true
           },
           {
+            "type": "function_expression",
+            "named": true
+          },
+          {
             "type": "group_expression",
             "named": true
           },
@@ -192,6 +204,10 @@
           },
           {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "function_expression",
             "named": true
           },
           {
@@ -326,6 +342,10 @@
             "named": true
           },
           {
+            "type": "function_expression",
+            "named": true
+          },
+          {
             "type": "group_expression",
             "named": true
           },
@@ -389,6 +409,10 @@
         },
         {
           "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "function_expression",
           "named": true
         },
         {
@@ -489,6 +513,10 @@
             "named": true
           },
           {
+            "type": "function_expression",
+            "named": true
+          },
+          {
             "type": "group_expression",
             "named": true
           },
@@ -554,6 +582,10 @@
           },
           {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "function_expression",
             "named": true
           },
           {
@@ -625,6 +657,32 @@
     }
   },
   {
+    "type": "function_expression",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block_statement",
+            "named": true
+          }
+        ]
+      },
+      "parameters": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "parameters",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "group_expression",
     "named": true,
     "fields": {
@@ -646,6 +704,10 @@
           },
           {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "function_expression",
             "named": true
           },
           {
@@ -702,6 +764,10 @@
           },
           {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "function_expression",
             "named": true
           },
           {
@@ -860,6 +926,10 @@
           "named": true
         },
         {
+          "type": "function_expression",
+          "named": true
+        },
+        {
           "type": "group_expression",
           "named": true
         },
@@ -970,6 +1040,10 @@
           "named": true
         },
         {
+          "type": "function_expression",
+          "named": true
+        },
+        {
           "type": "group_expression",
           "named": true
         },
@@ -1025,6 +1099,10 @@
             "named": true
           },
           {
+            "type": "function_expression",
+            "named": true
+          },
+          {
             "type": "group_expression",
             "named": true
           },
@@ -1075,6 +1153,10 @@
             "named": true
           },
           {
+            "type": "function_expression",
+            "named": true
+          },
+          {
             "type": "group_expression",
             "named": true
           },
@@ -1122,6 +1204,10 @@
           },
           {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "function_expression",
             "named": true
           },
           {
@@ -1181,6 +1267,10 @@
             "named": true
           },
           {
+            "type": "function_expression",
+            "named": true
+          },
+          {
             "type": "group_expression",
             "named": true
           },
@@ -1234,6 +1324,10 @@
           },
           {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "function_expression",
             "named": true
           },
           {
@@ -1342,6 +1436,10 @@
           },
           {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "function_expression",
             "named": true
           },
           {
